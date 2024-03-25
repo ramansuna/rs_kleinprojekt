@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.DragEvent?>
+<?import javafx.scene.input.TransferMode?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+
+<GridPane fx:id="rootPane" xmlns="http://javafx.com/javafx/16"
+	xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" hgap="10"
+	vgap="10"
+	fx:controller="RS_KleinProjekt.rs_kleinprojekt.FileEncryptorController"
+	onDragOver="#handleDragOver" onDragDropped="#handleDragDropped">
+	<VBox fx:id="mainContainer" style="-fx-padding: 10px;">
+		<Label fx:id="titleLabel" text="File Encryptor"
+			style="-fx-font-size: 18;" />
+
+		<GridPane>
+			<Label fx:id="inputFilePathLabel" text="Input File Path:"
+				GridPane.columnIndex="0" GridPane.rowIndex="0" />
+			<TextField fx:id="inputFilePath"
+				promptText="Enter input file path" GridPane.columnIndex="1"
+				GridPane.rowIndex="0" onDragOver="#handleDragOver"
+				onDragDropped="#handleInputFileDropped" />
+			<Rectangle fx:id="inputFilePathDropArea" width="200"
+				height="20" style="-fx-fill: transparent; -fx-stroke: black;"
+				GridPane.columnIndex="2" GridPane.rowIndex="0" />
+				
+			<Label fx:id="outputFilePathLabel" text="Output File Path:"
+				GridPane.columnIndex="0" GridPane.rowIndex="1" />
+			<TextField fx:id="outputFilePath"
+				promptText="Enter output file path" GridPane.columnIndex="1"
+				GridPane.rowIndex="1" onDragOver="#handleDragOver"
+				onDragDropped="#handleOutputFileDropped" />
+			<Rectangle fx:id="outputFilePathDropArea" width="200"
+				height="20" style="-fx-fill: transparent; -fx-stroke: black;"
+				GridPane.columnIndex="2" GridPane.rowIndex="1" />
+				
+
+			<Label fx:id="passwordLabel" text="Password:"
+				GridPane.columnIndex="0" GridPane.rowIndex="2" />
+			<PasswordField fx:id="passwordField"
+				promptText="Enter password" GridPane.columnIndex="1"
+				GridPane.rowIndex="2" />
+		</GridPane>
+
+		<HBox spacing="10" alignment="CENTER"
+			style="-fx-padding: 10px 0;">
+			<Button fx:id="encryptButton" text="Encrypt"
+				onAction="#encryptFile" />
+			<Button fx:id="decryptButton" text="Decrypt"
+				onAction="#decryptFile" />
+		</HBox>
+
+		<Line styleClass="separator" GridPane.columnSpan="3"
+			GridPane.rowIndex="4" startX="0" startY="0" endX="1" endY="0"
+			stroke="BLACK" />
+
+		<Label fx:id="statusLabel" text="" style="-fx-padding: 10px 0;" />
+	</VBox>
+</GridPane>
